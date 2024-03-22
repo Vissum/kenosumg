@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://kit.fontawesome.com/fb3d45239c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="SQL.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alef&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <title>SQL Server</title>
+</head>
+
+<body>
+
+    <header class="banner">
+        <div class="banner-contenido">
+            <div class="banner-texto-imagen">
+                <div class="imagen">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Escudo_de_la_universidad_Mariano_G%C3%A1lvez_Guatemala.svg/1200px-Escudo_de_la_universidad_Mariano_G%C3%A1lvez_Guatemala.svg.png" alt="Escudo de la Universidad Mariano Gálvez de Guatemala">
+                </div>
+                <div class="texto">
+                    <h1>Universidad Mariano Gálvez de Guatemala</h1>
+                    <p>Facultad de Ingeniería en Sistemas</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="menu-navegacion">
+        <div class="menu-icono" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="menu-items" id="menuItems">
+            <li><a href="#terminos-sql">Términos de SQL Server</a></li>
+            <li><a href="#system-databases">System Databases</a></li>
+            <li><a href="#roles-servidores">Roles en los Servidores</a></li>
+            <li><a href="#funcion-replication">Función Replication</a></li>
+            <li><a href="#funcion-sql-profiler">Función SQL Profiler</a></li>
+        </ul>
+    </nav>
+    
+   
+    <div class="primdiv">
+        <h1>Términos de SQL Server</h1>
+        
+        <hr>
+        <h2>¿Qué es SQL Server?</h2>
+        <p>SQL Server es un potente sistema de gestión de bases de datos relacionales desarrollado por Microsoft. Utiliza el lenguaje SQL estándar para almacenar, manipular y recuperar datos. Ofrece características robustas de seguridad, alta disponibilidad y escalabilidad. Incluye motores de bases de datos para escenarios relacionales, OLAP y streaming de datos. Además, proporciona herramientas de inteligencia empresarial para integración de datos, análisis y reportes. SQL Server es ampliamente adoptado en entornos empresariales para alojar aplicaciones de bases de datos críticas, data warehousing y análisis de datos, gracias a sus capacidades de administración y monitoreo integradas.</p>
+    
+        <div class="contenedor">
+            <img src="https://ipappg.edu.pe/blog/wp-content/uploads/2022/05/mssqlserver.png" alt="">
+        </div>
+
+    </div>
+    <div class="section" id="system-databases">
+        <h1>Para qué se utilizan las System Databases</h1>
+    </div>
+    <div class="segdiv">
+        <hr>
+        
+        <ul>
+            <li>
+                <h3>Master:</h3>
+                <p><strong>Propósito:</strong> La base de datos "master" es una de las bases de datos del sistema más importantes en SQL Server.</p>
+                <p><strong>Función:</strong></p>
+                <ul>
+                    <li>Almacena la información sobre todas las bases de datos creadas en una instancia de SQL Server.</li>
+                    <li>Contiene la información de inicio de sesión (logins) y roles de servidor.</li>
+                    <li>Mantiene la información de configuración del servidor, como las rutas de los archivos de datos y registros, opciones de configuración del servidor, etc.</li>
+                    <li>Es esencial para iniciar y ejecutar correctamente el servidor de SQL Server.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Model:</h3>
+                <p><strong>Propósito:</strong> La base de datos "model" se utiliza como plantilla (template) cuando se crea una nueva base de datos en SQL Server.</p>
+                <p><strong>Función:</strong></p>
+                <ul>
+                    <li>Contiene la estructura predeterminada de todas las nuevas bases de datos que se crean en el servidor.</li>
+                    <li>Cualquier cambio que se realice en la base de datos "model" se aplicará automáticamente a las nuevas bases de datos que se creen después.</li>
+                    <li>Se usa para configurar parámetros de base de datos por defecto, como el tamaño de los archivos de datos y de registro.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Msdb:</h3>
+                <p><strong>Propósito:</strong> La base de datos "msdb" es una base de datos de sistema que se utiliza principalmente para administrar tareas y servicios relacionados con SQL Server.</p>
+                <p><strong>Función:</strong></p>
+                <ul>
+                    <li>Almacena información sobre copias de seguridad (backups), mantenimiento de bases de datos, historial de trabajos de SQL Server Agent, etc.</li>
+                    <li>Contiene información sobre alertas y operadores para notificaciones del sistema.</li>
+                    <li>Utilizada por SQL Server Agent para programar y ejecutar tareas, como copias de seguridad, indexaciones, ejecución de scripts, etc.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Tempdb:</h3>
+                <p><strong>Propósito:</strong> La base de datos "tempdb" es una base de datos temporal utilizada para almacenar datos temporales, como tablas temporales, variables de tabla y otros objetos temporales.</p>
+                <p><strong>Función:</strong></p>
+                <ul>
+                    <li>Almacena datos temporales creados durante la ejecución de consultas, procedimientos almacenados, funciones y otros procesos.</li>
+                    <li>Se utiliza para ordenar y agrupar datos temporalmente cuando se ejecutan operaciones de consulta complejas.</li>
+                    <li>Se recrea cada vez que se reinicia SQL Server, por lo que cualquier información almacenada en "tempdb" es transitoria y no persistente.</li>
+                </ul>
+            </li>
+        </ul>
+        <hr>
+    </div>
+    <div class="contenedor2">
+        <img src=https://s33046.pcdn.co/wp-content/uploads/2017/08/word-image-59.png" alt="">
+    </div>
+    <div class="section" id="roles-servidores">
+        <h1>Roles en los servidores</h1>
+    </div>
+
+    <div class="terdiv">
+        
+        <ul>
+            <li>
+                <h3>bulkadmin:</h3>
+                <p><strong>Privilegios:</strong></p>
+                <ul>
+                    <li>Puede realizar operaciones de <strong>bulk import</strong> (bulk insert).</li>
+                    <li>Puede importar grandes volúmenes de datos desde archivos en el sistema de archivos del servidor hacia tablas en una base de datos.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>dbcreator:</h3>
+                <p><strong>Privilegios:</strong></p>
+                <ul>
+                    <li>Puede <strong>crear, modificar y eliminar bases de datos</strong> en el servidor.</li>
+                    <li>Tiene permisos para realizar tareas de <strong>administración de bases de datos</strong>, como cambiar propiedades de bases de datos, definir archivos y grupos de archivos, y configurar opciones de bases de datos.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>diskadmin:</h3>
+                <p><strong>Privilegios:</strong></p>
+                <ul>
+                    <li>Puede <strong>administrar archivos de datos y registros</strong> en el sistema de archivos del servidor.</li>
+                    <li>Tiene permisos para <strong>agregar o quitar archivos de datos y registros</strong> a las bases de datos, y para cambiar las ubicaciones físicas de los archivos.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>processadmin:</h3>
+                <p><strong>Privilegios:</strong></p>
+                <ul>
+                    <li>Puede <strong>detener procesos de SQL Server</strong>.</li>
+                    <li>Tiene permisos para <strong>monitorear y finalizar los procesos de usuario</strong> que se están ejecutando en el servidor.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>public:</h3>
+                <p><strong>Privilegios:</strong></p>
+                <ul>
+                    <li>Es un rol predefinido al que se le otorgan <strong>ciertos permisos básicos</strong> en todas las bases de datos.</li>
+                    <li>Los usuarios que pertenecen al rol "public" tienen <strong>acceso predeterminado a ciertos objetos y funciones</strong> dentro de las bases de datos, como vistas del sistema y procedimientos almacenados del sistema.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>securityadmin:</h3>
+                <p><strong>Privilegios:</strong></p>
+                <ul>
+                    <li>Puede <strong>administrar cuentas de inicio de sesión y roles de servidor</strong>.</li>
+                    <li>Tiene permisos para <strong>agregar y quitar inicios de sesión</strong>, cambiar propiedades de inicio de sesión, asignar roles de servidor, entre otros.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>serveradmin:</h3>
+                <p><strong>Privilegios:</strong></p>
+                <ul>
+                    <li>Puede realizar tareas de <strong>administración a nivel de servidor</strong>.</li>
+                    <li>Tiene permisos para <strong>configurar opciones de servidor</strong>, detener y reiniciar el servidor, y cambiar configuraciones globales del servidor.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>setupadmin:</h3>
+                <p><strong>Privilegios:</strong></p>
+                <ul>
+                    <li>Puede <strong>administrar la instalación de SQL Server</strong>.</li>
+                    <li>Tiene permisos para <strong>agregar y quitar cuentas de servicios</strong>, configurar opciones de instalación y administrar las propiedades de la instancia.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>sysadmin:</h3>
+                <p><strong>Privilegios:</strong></p>
+                <ul>
+                    <li>Este es el rol de servidor más alto y poderoso en SQL Server.</li>
+                    <li>Tiene <strong>todos los permisos posibles a nivel de servidor y base de datos</strong>.</li>
+                    <li>Los usuarios que pertenecen a este rol tienen <strong>control total sobre todos los recursos de SQL Server</strong>, incluyendo la capacidad de agregar o eliminar usuarios, bases de datos, roles, procedimientos almacenados, tablas, entre otros.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="contenedor2">
+            <img src="https://s33046.pcdn.co/wp-content/uploads/2017/09/word-image-22a-624x372.png" alt="">
+        </div>
+        <hr>
+    </div>
+    
+    <div class="section" id="funcion-replication">
+        <h1>¿Qué significa la función Replication?</h1>
+    </div>
+    
+    <div class="cuadiv">
+        <ul>
+            <li>
+                <h3>Balanceo de carga:</h3>
+                <p>Replicar datos para distribuir la carga entre varios servidores SQL Server, permitiendo que las consultas se ejecuten en servidores locales en lugar de en un servidor central.</p>
+            </li>
+            <li>
+                <h3>Alta disponibilidad:</h3>
+                <p>Crear copias redundantes de bases de datos para asegurar que los datos estén disponibles en caso de fallo de hardware o de servidor. Esto incluye escenarios como la replicación de alta disponibilidad (AlwaysOn Availability Groups).</p>
+            </li>
+            <li>
+                <h3>Consolidación de datos:</h3>
+                <p>Recopilar datos de varias ubicaciones geográficas o sucursales en una ubicación central, manteniendo copias actualizadas de los datos en tiempo real.</p>
+            </li>
+            <li>
+                <h3>Integración de datos:</h3>
+                <p>Sincronizar datos entre diferentes sistemas o bases de datos, permitiendo que los datos estén disponibles para aplicaciones y procesos en diferentes plataformas.</p>
+            </li>
+            <li>
+                <h3>Reporting y análisis:</h3>
+                <p>Crear copias de bases de datos para ejecutar informes o análisis de datos sin afectar el rendimiento de los sistemas de producción.</p>
+            </li>
+        </ul>
+    
+        <ul>
+            <li>
+                <h3>Replicación por instantáneas (Snapshot Replication):</h3>
+                <p>Toma una instantánea de la base de datos en un momento específico y la replica en otros servidores. Es útil para situaciones en las que los datos no cambian con frecuencia.</p>
+            </li>
+            <li>
+                <h3>Replicación transaccional (Transactional Replication):</h3>
+                <p>Replica cambios de datos en tiempo real o casi en tiempo real desde una base de datos a otra. Es útil para aplicaciones que necesitan sincronización en tiempo real.</p>
+            </li>
+            <li>
+                <h3>Replicación de mezcla (Merge Replication):</h3>
+                <p>Permite cambios bidireccionales entre las bases de datos, lo que es útil en escenarios donde las bases de datos pueden cambiar en múltiples ubicaciones y necesitan fusionarse.</p>
+            </li>
+            <li>
+                <h3>Replicación peer-to-peer (Peer-to-Peer Replication):</h3>
+                <p>Cada base de datos es tanto un editor como un suscriptor, lo que significa que los cambios realizados en cualquier ubicación se propagan a otras. Es útil para cargas de trabajo que requieren alta disponibilidad y escalabilidad.</p>
+            </li>
+        </ul>
+        
+        <div class="contenedor2">
+            <img src="https://s33046.pcdn.co/wp-content/uploads/2018/09/word-image-118.png" alt="">
+        </div>
+        <hr>
+    </div>
+
+    <div class="section" id="funcion-sql-profiler">
+        <h1>¿Cuál es la función de SQL Profiler?</h1>
+    </div>
+
+    <div class="quindiv">
+        
+    <ul>
+        <li>
+            <h3>Captura de Eventos:</h3>
+            <p>SQL Server Profiler captura una amplia variedad de eventos que ocurren en una instancia de SQL Server. Estos eventos pueden incluir consultas ejecutadas, cambios de esquema, errores, inicio y cierre de sesiones, entre otros.</p>
+        </li>
+        <li>
+            <h3>Análisis en Tiempo Real:</h3>
+            <p>Permite ver en tiempo real las consultas y acciones que se están ejecutando en una base de datos de SQL Server. Esto es útil para monitorear el rendimiento y la actividad del servidor en tiempo real.</p>
+        </li>
+        <li>
+            <h3>Creación de Perfiles Personalizados:</h3>
+            <p>Los usuarios pueden crear perfiles personalizados para capturar solo los eventos específicos que les interesan. Esto ayuda a reducir el ruido y enfocarse en los eventos relevantes.</p>
+        </li>
+        <li>
+            <h3>Identificación de Cuellos de Botella:</h3>
+            <p>Al monitorear las consultas y eventos en tiempo real, los administradores pueden identificar fácilmente las consultas lentas, los bloqueos y otros problemas de rendimiento.</p>
+        </li>
+        <li>
+            <h3>Optimización de Consultas:</h3>
+            <p>Al analizar las consultas capturadas, los desarrolladores pueden identificar oportunidades para optimizar consultas y mejorar el rendimiento de las aplicaciones.</p>
+        </li>
+        <li>
+            <h3>Diagnóstico de Problemas:</h3>
+            <p>Facilita la detección y resolución de problemas en una base de datos de SQL Server. Por ejemplo, puede ayudar a identificar consultas que causan bloqueos o errores.</p>
+        </li>
+        <li>
+            <h3>Auditoría y Seguridad:</h3>
+            <p>SQL Server Profiler también se puede utilizar para auditar acciones realizadas en una base de datos, como cambios en datos sensibles o acceso a recursos críticos.</p>
+        </li>
+        <li>
+            <h3>Generación de Informes y Análisis:</h3>
+            <p>Los datos capturados por SQL Server Profiler pueden ser guardados en archivos o tablas de base de datos para su posterior análisis. También se pueden generar informes para revisión y análisis.</p>
+        </li>
+    </ul>
+
+    <div class="contenedor2">
+        <img src="https://www.mytecbits.com/wp-content/uploads/Monitoring-Specific-Table-Using-SQL-Profiler-01.jpg" alt="">
+    </div>
+
+    <hr>
+
+    </div>
+
+    <div class="sepdiv">
+        <h1>e-Grafía</h1>
+
+        <p><b>Bases de Datos del Sistema SQL Server</b><br>Microsoft Docs. "System Databases".</p>
+        <p><b>Server Roles en SQL Server</b><br>Microsoft Docs. "Server-Level Roles"</p>
+        <p><b>Funciones de Replicación en SQL Server</b><br>Microsoft Docs. "Replication Overview".</p>
+        <p><b>SQL Server Profiler</b><br>Microsoft Docs. "SQL Server Profiler"</p>
+        <br>
+        <p><b>Libros y Manuales</b><br>"Microsoft SQL Server 2019: A Beginner's Guide" by Dusan Petkovic 
+            <br>"Pro SQL Server 2019 Administration" by Peter Carter
+            <br> "Professional Microsoft SQL Server 2019 Administration" by Adam Jorgensen, Bradley Ball, Steven Wort, et al.
+        </p>
+        <p><b>Documentación Oficial y Recursos en Línea</b><br>Microsoft SQL Server Official Documentation
+           <br> SQL Server Books Online (BOL)
+           <br> SQL Server Central - Articles and Resources
+           <br> W3Schools - SQL Server Tutorial
+           <br> GeeksforGeeks - SQL Server
+           <br> SQL Shack - Articles and Tutorials
+        </p>
+        <br>
+        <p><b>Referencias de OpenAI (para consultas y explicaciones adicionales):</b><br>OpenAI. "GPT-4</p>
+
+    
+    </div>
+    <footer>
+    <div class="sexdiv">
+        <ul>
+            <li>Catedrático: Gustavo Vides Solis</li>
+            <li>Introducción a los sistemas de cómputo</li>
+            <li>Sección H</li>
+            <li>Alumno: Kenneth Mitchell Osorio Castillo</li>
+            <br>
+            <b>22/03/2024</b>
+
+        </ul>
+    </div>
+</footer>
+
+    <script>
+        function toggleMenu() {
+            var menuItems = document.getElementById("menuItems");
+            menuItems.classList.toggle("show");
+        }
+
+       
+    </script>
+
+</body>
+</html>
